@@ -21,6 +21,7 @@ jobs:
       - run: echo 'Hi ${{ env.DAY_OF_WEEK }}' 
         env:
           DAY_OF_WEEK: Tuesday
+      - run: echo 'Hi ${{ env.DAY_OF_WEEK }}' 
         shell: bash
 
 # name: Greeting on variable day
