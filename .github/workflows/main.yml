@@ -21,7 +21,7 @@ jobs:
       - run: echo 'Hi ${{ env.DAY_OF_WEEK }}' 
         env:
           DAY_OF_WEEK: Tuesday
-      - name: 'test-vars'
+      - id: 'test-vars'
         env: 
           container: 'gcr.io/deeplearning-platform-release/base-cu110:latest'
           - run: echo ${container}' 
