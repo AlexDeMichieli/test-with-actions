@@ -1,7 +1,7 @@
 on: [push]
 
-env:
-  DAY_OF_WEEK: Monday
+# env:
+#   DAY_OF_WEEK: Monday
 
 # jobs:
 #   hello_world_job:
