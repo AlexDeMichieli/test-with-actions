@@ -1,34 +1,35 @@
 on: [push]
 
-env:
-  DAY_OF_WEEK: Monday
-
-jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: A job to say hello
-    steps:
-      - uses: actions/checkout@v3
-      - id: foo
-      # uses: ./.github/actions/hello-world-composite-action # uses action in same repo
-       # uses: alexdemichieli/hello-world-composite-action@v4 # would use action in another repo
-       # with:
-        #  who-to-greet: 'Hello Alex'
-      #- run: echo here's a joke ${{ steps.foo.outputs.random-joke }} #steps foo should 'output' random-joke. Random-joke is the id of the output in the action.yml file
-        run: echo "this is the variable $DAY_OF_WEEK"
-        shell: bash
-
 # env:
 #   DAY_OF_WEEK: Monday
 
 # jobs:
-#   greeting_job:
+#   hello_world_job:
 #     runs-on: ubuntu-latest
-#     env:
-#       Greeting: Hello
+#     name: A job to say hello
 #     steps:
-#       - name: "Say Hello Mona it's Monday"
-#         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
-#         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-#         env:
-#           First_Name: Mona
+#       - uses: actions/checkout@v3
+#       - id: foo
+#         uses: ./.github/actions/hello-world-composite-action # uses action in same repo
+#        # uses: alexdemichieli/hello-world-composite-action@v4 # would use action in another repo
+#         with:
+#           who-to-greet: 'Hello Alex'
+#       - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} #steps foo should 'output' random-joke. Random-joke is the id of the output in the action.yml file
+#       - run: echo "this is the variable $DAY_OF_WEEK"
+#         shell: bash
+
+env:
+  DAY_OF_WEEK: Monday
+
+jobs:
+  greeting_job:
+    runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+    steps:
+      - name: "Say Hello Mona it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Monday' }}
+        run: echo here's a joke ${{ steps.foo.outputs.random-joke }} 
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
