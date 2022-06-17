@@ -27,9 +27,10 @@ jobs:
     env:
       Greeting: Hello
     steps:
-      - name: "Say Hello Mona it's Monday"
-        if: ${{ env.DAY_OF_WEEK == 'Monday' }}
-        run: echo here's a joke ${{ steps.foo.outputs.random-joke }} 
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+      id: foo
+      uses: ./.github/actions/hello-world-composite-action 
+ 
+      - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} 
+      - run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
         env:
           First_Name: Mona
