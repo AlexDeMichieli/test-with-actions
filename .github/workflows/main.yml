@@ -17,10 +17,7 @@ jobs:
           who-to-greet: 'Hello Alex'
       - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} #steps foo should 'output' random-joke. Random-joke is the id of the output in the action.yml file
       - run: echo "this is the variable ${{env.DAY_OF_WEEK }}" #to access global vars you need to access the global context with .env and ${{}}
-      - run: echo "${VERTEX_JOB_URI}"
-      - run: echo 'Hi ${{ env.DAY_OF_WEEK }}' 
-        env:
-          DAY_OF_WEEK: Tuesday
+      - run: echo " this is the variable in output ${VERTEX_JOB_URI}"
         shell: bash
 
       - name: "Another env test without curlies"
