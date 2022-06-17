@@ -16,6 +16,8 @@ jobs:
           who-to-greet: 'Hello Alex'
       - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} #steps foo should 'output' random-joke. Random-joke is the id of the output in the action.yml file
       - run: echo "this is the variable ${{ env.DAY_OF_WEEK }}"
+        env: echo 'Hi ${{ env.mascot }}' 
+        DAY_OF_WEEK: Tuesday
         shell: bash
 
 # name: Greeting on variable day
