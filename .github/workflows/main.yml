@@ -10,8 +10,8 @@ jobs:
     steps:
       # - uses: actions/checkout@v3
       - id: foo
-        uses: alexdemichieli/hello-world-composite-action@v3
+        uses: alexdemichieli/hello-world-composite-action@v4
         with:
           who-to-greet: 'Hello Alex'
-      - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} ##steps foo should 'output' random-joke. Random-joke is 
+      - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} #steps foo should 'output' random-joke. Random-joke is 
         shell: bash
