@@ -13,5 +13,5 @@ jobs:
         uses: alexdemichieli/hello-world-composite-action@v3
         with:
           who-to-greet: 'Hello Alex'
-      - run: echo here's a joke ${{ steps.foo.outputs.randon-joke }}
+      - run: echo here's a joke, but ${{ steps.foo.outputs.random-joke }} ##steps foo should 'output' random-joke. Random-joke is 
         shell: bash
