@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: ./.github/actions/hello-world-composite-action
-       # uses: alexdemichieli/hello-world-composite-action@v4
+        uses: ./.github/actions/hello-world-composite-action # uses action in same repo
+       # uses: alexdemichieli/hello-world-composite-action@v4 # would use action in another repo
         with:
           who-to-greet: 'Hello Alex'
       - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} #steps foo should 'output' random-joke. Random-joke is the id of the output in the action.yml file
-      - run: echo this is the variable $DAY_OF_WEEK
+      - run: echo "this is the variable $DAY_OF_WEEK"
         shell: bash
