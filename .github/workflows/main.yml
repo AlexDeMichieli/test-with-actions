@@ -27,8 +27,9 @@ jobs:
     env:
       Greeting: Hello
     steps:
-      - uses: ./.github/actions/hello-world-composite-action 
+      - uses: actions/checkout@v3
       - id: foo 
+        - uses: ./.github/actions/hello-world-composite-action 
         - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} 
         - run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
           env:
