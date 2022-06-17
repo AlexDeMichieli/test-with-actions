@@ -10,7 +10,7 @@ jobs:
     steps:
       # - uses: actions/checkout@v3
       - id: foo
-        uses: ./.github/actions/hello-world-composite-action
+        uses: ../../github/actions/hello-world-composite-action
        # uses: alexdemichieli/hello-world-composite-action@v4
         with:
           who-to-greet: 'Hello Alex'
