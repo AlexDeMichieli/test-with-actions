@@ -23,7 +23,7 @@ jobs:
           DAY_OF_WEEK: Tuesday
         shell: bash
 
-      - name: "Say Hello Mona it's Monday"
+      - name: "Another env test without curlies"
         run: echo "Today is $DAY_OF_WEEK!"
         env:
           First_Name: Mona
