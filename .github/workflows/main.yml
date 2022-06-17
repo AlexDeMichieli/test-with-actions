@@ -2,7 +2,7 @@ on: [push]
 
 env:
   DAY_OF_WEEK: Monday
-  
+
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
     steps:
       # - uses: actions/checkout@v3
       - id: foo
-        uses: alexdemichieli/hello-world-composite-action@v1
+        uses: alexdemichieli/hello-world-composite-action@v2
         with:
           who-to-greet: 'Hello Alex'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
