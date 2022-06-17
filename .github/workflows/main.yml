@@ -2,6 +2,7 @@ on: [push]
 
 env:
   DAY_OF_WEEK: Monday
+  VERTEX_JOB_URI: 'https://console.cloud.google.com/vertex-ai/locations'
 
 jobs:
   hello_world_job:
@@ -15,7 +16,8 @@ jobs:
         with:
           who-to-greet: 'Hello Alex'
       - run: echo here's a joke ${{ steps.foo.outputs.random-joke }} #steps foo should 'output' random-joke. Random-joke is the id of the output in the action.yml file
-      - run: echo "this is the variable ${env.DAY_OF_WEEK}"
+     # - run: echo "this is the variable ${{env.DAY_OF_WEEK }}"
+      - run: echo "${VERTEX_CONTAINER}"
       - run: echo 'Hi ${{ env.DAY_OF_WEEK }}' 
         env:
           DAY_OF_WEEK: Tuesday
