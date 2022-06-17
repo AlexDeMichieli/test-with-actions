@@ -19,10 +19,14 @@ jobs:
       - run: echo "this is the variable ${{env.DAY_OF_WEEK }}" #to access global vars you need to access the global context with .env and ${{}}
       - run: echo "${VERTEX_JOB_URI}"
       - run: echo 'Hi ${{ env.DAY_OF_WEEK }}' 
-      - run: echo 'Hi $DAY_OF_WEEK' 
         env:
           DAY_OF_WEEK: Tuesday
         shell: bash
+
+      - name: "Say Hello Mona it's Monday"
+        run: echo "Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
 
 # name: Greeting on variable day
 
