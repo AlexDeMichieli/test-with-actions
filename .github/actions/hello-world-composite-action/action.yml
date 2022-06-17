@@ -1,0 +1,23 @@
+name: 'Hello World'
+description: 'Greet someone'
+inputs:
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  random-joke: # id of the output
+    description: "Random joke"
+    value: ${{ steps.random-joke-generator.outputs.joke }} #gets the value from line 18. Syntax: steps.<id>.outputs.<name>
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - id: random-joke-generator
+      run: echo "::set-output name=joke::$(echo "I don't know any jokes unfortunately")"
+      shell: bash
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash          
+    - run: goodbye.sh
+      shell: bash
