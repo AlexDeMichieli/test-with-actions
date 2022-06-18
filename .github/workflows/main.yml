@@ -17,7 +17,7 @@ jobs:
           who-to-greet: 'Hello Alex'
       - run: echo "use of global variable in checkmark output ${{env.DAY_OF_WEEK }}" #to access global vars in checkmarks layout you need to access the global context with .env and ${{}}
       - run: echo " this is the variable in log ${VERTEX_JOB_URI}"
-        run: |
+      - run: |
           for i in {1..5}
           do
           echo ${VERTEX_JOB_URI}"
