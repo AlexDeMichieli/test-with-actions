@@ -15,12 +15,11 @@ env:
   VERTEX_NOTEBOOK_URI: 'https://notebooks.cloud.google.com/view'
 runs:
   using: "composite"
-  - name: 'test envs'
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - id: random-number-generator
-      run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)"
+      run: echo "::set-output name=random-number::$(echo $RANDOM)"
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash          
