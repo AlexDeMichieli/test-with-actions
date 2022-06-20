@@ -13,7 +13,7 @@ outputs:
     description: "Testing a variable"
     value: ${{ steps.vertex-execution.outputs.test-var}}
 env:
-  GLO-VAR: 'i am a global variable'
+  GLOVAR: 'i am a global variable'
 runs:
   using: "composite"
   steps:
