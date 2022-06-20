@@ -34,7 +34,7 @@ runs:
       run: |
         for i in {1..5}
           do
-          echo "${hello-there}"
+          echo "::set-output name=test-var::$(echo $hello-there)" "${hello-there}"
         done
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
