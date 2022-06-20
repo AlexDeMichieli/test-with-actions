@@ -5,8 +5,6 @@ on: [push]
 #   First_Name: "Alex"
 #   VERTEX_JOB_URI: 'https://console.cloud.google.com/vertex-ai/locations'
 #   VERTEX_CONTAINER: 'gcr.io/deeplearning-platform-release/base-cu110:latest'
-
-
 name: 'Vertex AI Notebook Review Action'
 description: 'Execute notebooks and create links to their output files'
 inputs:
@@ -37,6 +35,8 @@ env:
   VERTEX_JOB_URI: 'https://console.cloud.google.com/vertex-ai/locations'
   VERTEX_NOTEBOOK_URI: 'https://notebooks.cloud.google.com/view'
 
+jobs:
+  hello_world_job:
   runs:
   using: 'composite'
   steps:
