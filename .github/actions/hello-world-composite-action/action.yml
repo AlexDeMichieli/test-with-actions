@@ -13,7 +13,7 @@ outputs:
     description: "Testing a variable"
     value: ${{ steps.vertex-execution.outputs.test-var}}
 env:
-  GLOVAR: 'i am a global variable'
+  GLOVAR: ${{ 'I am a global variable' }}
 runs:
   using: "composite"
   steps:
@@ -21,7 +21,7 @@ runs:
       shell: bash
     - id: random-number-generator
       env:
-        withinScope: ${{ 'i am a in-scope variable' }}
+        withinScope: ${{ 'i am a in scope variable' }}
       run: echo "::set-output name=random-number::$(echo ${GLOVAR})" # null output
       #run: echo "::set-output name=random-number::$(echo ${withinScope})" # outputs withinScope var successfully
       shell: bash
