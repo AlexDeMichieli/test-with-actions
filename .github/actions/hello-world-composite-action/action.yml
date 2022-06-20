@@ -20,7 +20,7 @@ runs:
       shell: bash
     - id: random-number-generator
       #run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # null output
-      run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # null output
+      run: echo "::set-output name=random-number::$(echo ${{env.VERTEX_CONTAINER})" # null output
       shell: bash
     - name: 'vertex-execution'
       env:
