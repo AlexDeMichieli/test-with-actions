@@ -21,7 +21,8 @@ runs:
       shell: bash
     - id: random-number-generator
       #run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # no output
-      run: echo "::set-output name=random-number::$(echo ${{env.VERTEX_CONTAINER}})" # no output
+      # run: echo "::set-output name=random-number::$(echo ${{env.VERTEX_CONTAINER}})" # no output
+      run: echo "::set-output name=variable-output::$(echo $RANDOM)" 
       shell: bash
     - id: 'vertex-execution'
       env:
