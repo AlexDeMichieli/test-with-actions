@@ -4,23 +4,69 @@ env:
   DAY_OF_WEEK: Monday
   First_Name: "Alex"
   VERTEX_JOB_URI: 'https://console.cloud.google.com/vertex-ai/locations'
+  VERTEX_CONTAINER: 'gcr.io/deeplearning-platform-release/base-cu110:latest'
 
 
-steps:
-  - uses: actions/checkout@v3
-  - id: foo
-    uses: ./.github/actions/hello-world-composite-action
-    with:
-      who-to-greet: 'Hello Alex'
-  - run: echo "use of global variable in checkmark output ${{env.DAY_OF_WEEK }}" #to access global vars in checkmarks layout you need to access the global context with .env and ${{}}
-  - run: echo " this is the variable in log ${VERTEX_JOB_URI}"
-  - run: |
-      for i in {1..5}
-      do
-      echo "${VERTEX_JOB_URI}"
-      done
+jobs:
+  hello_world_job:
+  runs:
+  using: 'composite'
+  steps:
+    - name: 'checkout'
+      uses: 'actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b'
+    # Move the files that are to be executed into a directory and rename them
+    - name: 'stage-files'
+      env:
+       
+        # allowlist: '${{ inputs.allowlist }}'
+        # dir: './${{ github.sha }}'
+      with:
+      run: |-
+          for i in {1..5}
+          do
+          echo "${VERTEX_JOB_URI}"
+          done
+    # Setup gcloud CLI
+    - name: 'setup-cloud-sdk'
+     # uses: 'google-github-actions/setup-gcloud@877d4953d2c70a0ba7ef3290ae968eb24af233bb'
+    - name: 'upload-folder'
+      uses: 'google-github-actions/upload-cloud-storage@v0'
+      with:
+      #  path: './${{ github.sha }}'
+       # destination: '${{ input.gcs_source_bucket }}'
+        gzip: false
+        headers: |-
+          content-type: application/octet-stream
+    - name: 'vertex-execution'
+      env:
+        #notebooks: '${{ input.allowlist }}'
+        #commit_sha: '${{ github.sha }}'
+        #output_location: 'gs://${{ input.gcs_output_bucket }}'
+        #source_location: 'gs://${{ input.gcs_source_bucket }}'
+        #machine_type: '${{ input.vertex_machine_type }}'
+      run: |-
+          for i in {1..5}
+          do
+          echo "${VERTEX_CONTAINER}"
+          done
+   
+    # runs-on: ubuntu-latest
+    # name: A job to say hello
+    # steps:
+    #   - uses: actions/checkout@v3
+    #   - id: foo
+    #     uses: ./.github/actions/hello-world-composite-action
+    #     with:
+    #       who-to-greet: 'Hello Alex'
+    #   - run: echo "use of global variable in checkmark output ${{env.DAY_OF_WEEK }}" #to access global vars in checkmarks layout you need to access the global context with .env and ${{}}
+    #   - run: echo " this is the variable in log ${VERTEX_JOB_URI}"
+    #   - run: |
+    #       for i in {1..5}
+    #       do
+    #       echo "${VERTEX_JOB_URI}"
+    #       done
 
-  - name: "Another env test without curlies ${{env.First_Name}}! or $First_Name"
-    run: echo "$First_Name"
-    env:
-      First_Name: Mona
+    #   - name: "Another env test without curlies ${{env.First_Name}}! or $First_Name"
+    #     run: echo "$First_Name"
+    #     env:
+    #       First_Name: Mona
