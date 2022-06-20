@@ -24,7 +24,7 @@ runs:
         within-scope: ${{ 'i am a in-scope variable' }}
       #run: echo "::set-output name=random-number::$(echo $RANDOM)" #outputs random variable
       #run: echo "::set-output name=random-number::$(echo $GLO-VAR)" # null output
-      run: echo "::set-output name=random-number::$(echo ${{env.GLO-VAR}})" # null output
+      #run: echo "::set-output name=random-number::$(echo ${{env.GLO-VAR}})" # null output
       run: echo "::set-output name=random-number::$(echo $'{within-scope}')" # null output
       shell: bash
     - id: vertex-execution
