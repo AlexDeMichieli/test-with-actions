@@ -23,8 +23,8 @@ runs:
     - id: random-number-generator
       env:
         withinScope: ${{ 'i am a in scope variable' }}
-      #run: echo "::set-output name=random-number::$(echo ${{env.GLOVAR}})" # null output
-      run: echo "Today is ${withinScope}"
+      run: echo "::set-output name=random-number::$(echo ${Monday})" # null output
+      #run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
       #run: echo "::set-output name=random-number::$(echo ${withinScope})" # outputs withinScope var successfully
       shell: bash
     - id: vertex-execution
