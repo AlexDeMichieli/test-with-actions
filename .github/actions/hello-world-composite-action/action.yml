@@ -14,7 +14,7 @@ outputs:
     value: ${{ steps.vertex-execution.outputs.test-var}}
 env:
   GLOVAR: ${{ 'I am a global variable' }}
-  DAY_OF_WEEK: Monday
+  Monday: Monday
 runs:
   using: "composite"
   steps:
@@ -23,8 +23,9 @@ runs:
     - id: random-number-generator
       env:
         withinScope: ${{ 'i am a in scope variable' }}
-      run: echo "::set-output name=random-number::$(echo ${Monday})" # null output
-      #run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+      # run: echo "::set-output name=random-number::$(echo ${{env.GLOVAR}})" # null output
+      run: echo "::set-output name=random-number::$(echo ${{Monday}})"
+      #run: echo "::set-output name=random-number::$(echo ${GLOVAR})" # null output
       #run: echo "::set-output name=random-number::$(echo ${withinScope})" # outputs withinScope var successfully
       shell: bash
     - id: vertex-execution
