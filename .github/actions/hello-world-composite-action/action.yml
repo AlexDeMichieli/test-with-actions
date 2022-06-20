@@ -6,9 +6,9 @@ inputs:
     required: true
     default: 'World'
 outputs:
-  test-var: # id of the output
-    description: "Print variable"
-    value: ${{ steps.print-var.outputs.g-env }} #gets the value from line 18. Syntax: steps.<id>.outputs.<name>
+  random-joke: # id of the output
+    description: "Random joke"
+    value: ${{ steps.random-joke-generator.outputs.g-env }} #gets the value from line 18. Syntax: steps.<id>.outputs.<name>
 env:
   VERTEX_CONTAINER: 'gcr.io/deeplearning-platform-release/base-cu110:latest'
   VERTEX_JOB_URI: 'https://console.cloud.google.com/vertex-ai/locations'
@@ -18,8 +18,8 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - id: print-var
-      run: echo "::set-output name=g-env::$(echo '${VERTEX_CONTAINER}'')"
+    - id: random-joke-generator
+      run: echo "::set-output name=g-env::$(echo "${VERTEX_CONTAINER}")"
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash          
