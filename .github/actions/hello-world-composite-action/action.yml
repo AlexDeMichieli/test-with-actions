@@ -14,7 +14,7 @@ outputs:
     value: ${{ steps.vertex-execution.outputs.test-var}}
 env:
   GLOVAR: ${{ 'I am a global variable' }}
-  Monday: Monday
+  Monday: 'Monday'
 runs:
   using: "composite"
   steps:
