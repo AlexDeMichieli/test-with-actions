@@ -10,7 +10,7 @@ jobs:
         uses: ./.github/actions/hello-world-composite-action
         with:
           who-to-greet: 'Mona the Octocat'
-      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+      - run: echo testing one variable ===> ${{ steps.foo.outputs.random-number }}
         shell: bash
-      - run: echo random-number ${{ steps.foo.outputs.testing-var }}
+      - run: echo testing another variable ${{ steps.foo.outputs.testing-var }}
         shell: bash
