@@ -24,18 +24,13 @@ runs:
         within-scope: ${{ 'i am a in-scope variable' }}
       #run: echo "::set-output name=random-number::$(echo $RANDOM)" #outputs random variable
       #run: echo "::set-output name=random-number::$(echo $GLO-VAR)" # null output
-      #run: echo "::set-output name=random-number::$(echo ${{env.GLO-VAR}})" # null output
+      run: echo "::set-output name=random-number::$(echo ${{env.GLO-VAR}})" # null output
       run: echo "::set-output name=random-number::$(echo $'{within-scope}')" # null output
       shell: bash
     - id: vertex-execution
       env:
         hello-there: ${{ 'hello there' }}
-      # run: echo "::set-output name=test-var::$(echo $hello-there)" #outputs hello-there
-      run: |
-        for i in {1..5}
-          do
-          echo "::set-output name=test-var::$(echo $hello-there)" "${hello-there}"
-        done
+      run: echo "::set-output name=test-var::$(echo $hello-there)" #outputs hello-there
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash          
