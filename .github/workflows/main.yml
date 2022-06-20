@@ -12,5 +12,5 @@ jobs:
           who-to-greet: 'Mona the Octocat'
       - run: echo testing one variable ${{ steps.foo.outputs.random-number }}
         shell: bash
-      - run: echo testing another variable ${{ steps.foo.outputs.testing-var }}
+      - run: echo testing another variable ${{ steps.foo.outputs.g-var }}
         shell: bash
