@@ -19,7 +19,13 @@ runs:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - id: random-number-generator
-      run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)"
+      #run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # null output
+      run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # null output
+      shell: bash
+    - name: 'vertex-execution'
+      env:
+        greeting: hello there
+      run: echo "::set-output name=random-number::$(echo $greeting)" # null output
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash          
