@@ -13,9 +13,7 @@ outputs:
     description: "Testing a variable"
     value: ${{ steps.vertex-execution.outputs.test-var}}
 env:
-  VERTEX_CONTAINER: 'gcr.io/deeplearning-platform-release/base-cu110:latest'
-  VERTEX_JOB_URI: 'https://console.cloud.google.com/vertex-ai/locations'
-  VERTEX_NOTEBOOK_URI: 'https://notebooks.cloud.google.com/view'
+  GLO-VAR: 'i am a global variable'
 runs:
   using: "composite"
   steps:
@@ -23,8 +21,8 @@ runs:
       shell: bash
     - id: random-number-generator
       #run: echo "::set-output name=random-number::$(echo $RANDOM)" #outputs random variable
-      #run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # null output
-      run: echo "::set-output name=random-number::$(echo ${{env.VERTEX_CONTAINER}})" # null output
+      #run: echo "::set-output name=random-number::$(echo $GLO-VAR)" # null output
+      run: echo "::set-output name=random-number::$(echo ${{env.GLO-VAR}})" # null output
       shell: bash
     - id: vertex-execution
       env:
