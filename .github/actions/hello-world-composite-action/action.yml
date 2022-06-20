@@ -9,20 +9,21 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
+  variable-output:
+    description: "outputting and using a variable"
+    value: ${{ steps.vertex-execution.outputs.variable-output }}
 env:
   VERTEX_CONTAINER: 'gcr.io/deeplearning-platform-release/base-cu110:latest'
-  VERTEX_JOB_URI: 'https://console.cloud.google.com/vertex-ai/locations'
-  VERTEX_NOTEBOOK_URI: 'https://notebooks.cloud.google.com/view'
 runs:
   using: "composite"
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - id: random-number-generator
-      #run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # null output
-      run: echo "::set-output name=random-number::$(echo ${{env.VERTEX_CONTAINER}})" # null output
+      #run: echo "::set-output name=random-number::$(echo $VERTEX_CONTAINER)" # no output
+      #run: echo "::set-output name=random-number::$(echo ${{env.VERTEX_CONTAINER}})" # no output
       shell: bash
-    - name: 'vertex-execution'
+    - id: 'vertex-execution'
       env:
         greeting: hello there
       run: echo "::set-output name=random-number::$(echo $greeting)" # null output
