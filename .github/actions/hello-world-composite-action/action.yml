@@ -25,12 +25,17 @@ runs:
       #run: echo "::set-output name=random-number::$(echo $RANDOM)" #outputs random variable
       #run: echo "::set-output name=random-number::$(echo $GLO-VAR)" # null output
       run: echo "::set-output name=random-number::$(echo ${{env.GLO-VAR}})" # null output
-      run: echo "::set-output name=random-number::$(echo ${within-scope})" # null output
+      run: echo "::set-output name=random-number::$(echo $'{within-scope}')" # null output
       shell: bash
     - id: vertex-execution
       env:
-        notebooks: ${{ 'hello there' }}
-      run: echo "::set-output name=test-var::$(echo $notebooks)" #outputs random variable
+        hello-there: ${{ 'hello there' }}
+      # run: echo "::set-output name=test-var::$(echo $hello-there)" #outputs hello-there
+      run: |
+        for i in {1..5}
+          do
+          echo "${hello-there}"
+        done
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash          
