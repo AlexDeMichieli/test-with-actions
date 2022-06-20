@@ -17,7 +17,7 @@ runs:
   using: "composite"
   - name: 'test envs'
     env:
-      greeting: '${{ hello world }}'
+      greeting: '${{ 'hello world' }}'
      
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
