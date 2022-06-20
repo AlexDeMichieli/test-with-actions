@@ -28,7 +28,7 @@ runs:
       shell: bash
     - id: vertex-execution
       env:
-        notebooks: ${{ 'It''s open source!' }}
+        notebooks: ${{ 'hello there' }}
       run: echo "::set-output name=test-var::$(echo $notebooks)" #outputs random variable
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
