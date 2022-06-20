@@ -24,7 +24,7 @@ runs:
       env:
         withinScope: ${{ 'i am a in scope variable' }}
       # run: echo "::set-output name=random-number::$(echo ${{env.GLOVAR}})" # null output
-      run: echo "::set-output name=random-number::$(echo ${{Monday}})"
+      run: echo "::set-output name=random-number::$(echo ${Monday})"
       #run: echo "::set-output name=random-number::$(echo ${GLOVAR})" # null output
       #run: echo "::set-output name=random-number::$(echo ${withinScope})" # outputs withinScope var successfully
       shell: bash
